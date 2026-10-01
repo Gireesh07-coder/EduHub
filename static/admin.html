@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin studio | EduHub</title>
+  <link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/components.css"><link rel="stylesheet" href="/css/pages.css">
+  <script defer src="/js/shared.js"></script><script defer src="/js/app.js"></script>
+</head>
+<body data-page="admin">
+  <header id="site-header"></header>
+  <main class="container section">
+    <span class="eyebrow">EduHub studio</span><h1>Good morning, admin.</h1>
+    <p id="admin-feedback" class="feedback" role="status"></p>
+    <div id="admin-stats" class="grid stats"></div>
+    <section class="card detail-outline" style="margin:1.5rem 0">
+      <h2>At a glance</h2><div class="admin-chart" id="admin-chart" role="img" aria-label="Platform activity"></div>
+    </section>
+    <div class="admin-tabs" role="tablist" aria-label="Admin sections">
+      <button data-target="panel-courses" aria-selected="true">Courses</button>
+      <button data-target="panel-categories" aria-selected="false">Categories</button>
+      <button data-target="panel-coupons" aria-selected="false">Coupons</button>
+      <button data-target="panel-users" aria-selected="false">Learners</button>
+      <button data-target="panel-orders" aria-selected="false">Orders</button>
+      <button data-target="panel-messages" aria-selected="false">Inbox</button>
+    </div>
+    <section class="admin-panel" id="panel-courses">
+      <div class="section-head"><div><h2>Course catalog</h2><p>Create and update offerings. Courses with order history are archived rather than deleted.</p></div></div>
+      <form id="admin-course-form" class="card detail-outline form-grid">
+        <div class="field"><label for="new-course-title">Course title</label><input id="new-course-title" name="title" minlength="3" maxlength="150" required></div>
+        <div class="field"><label for="admin-category-select">Category</label><select id="admin-category-select" name="category" required></select></div>
+        <div class="field full"><label for="new-course-description">Description</label><textarea id="new-course-description" name="description" minlength="20" maxlength="10000" required></textarea></div>
+        <div class="field"><label for="new-course-level">Level</label><select id="new-course-level" name="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+        <div class="field"><label for="new-course-instructor">Instructor</label><input id="new-course-instructor" name="instructor" maxlength="120" required></div>
+        <div class="field"><label for="new-course-price">Price</label><input id="new-course-price" name="price" type="number" min="0" step=".01" required></div>
+        <div class="field"><label for="new-course-discount">Sale price</label><input id="new-course-discount" name="discounted_price" type="number" min="0" step=".01"></div>
+        <div class="field"><label for="new-course-duration">Duration (hours)</label><input id="new-course-duration" name="duration_hours" type="number" min="1" value="10" required></div>
+        <div class="field"><label for="new-course-language">Language</label><input id="new-course-language" name="language" value="English" maxlength="50" required></div>
+        <div class="full inline"><button id="course-save-button" type="submit">Create course</button><button id="course-cancel-edit" class="button secondary hidden" type="button">Cancel edit</button></div>
+      </form>
+      <div class="table-wrap" style="margin-top:1.2rem"><table><thead><tr><th>Course</th><th>Category</th><th>Price</th><th>Status</th><th>Action</th></tr></thead><tbody id="admin-course-rows"></tbody></table></div>
+    </section>
+    <section class="admin-panel hidden" id="panel-categories">
+      <h2>Categories</h2><form id="admin-category-form" class="inline"><div class="field"><label for="new-category">Category name</label><input id="new-category" name="name" minlength="2" maxlength="80" required></div><button id="category-save-button" type="submit">Create category</button><button id="category-cancel-edit" class="button secondary hidden" type="button">Cancel edit</button></form>
+      <div class="table-wrap"><table><thead><tr><th>Name</th><th>Action</th></tr></thead><tbody id="admin-category-rows"></tbody></table></div>
+    </section>
+    <section class="admin-panel hidden" id="panel-coupons">
+      <h2>Coupons</h2><form id="admin-coupon-form" class="card detail-outline form-grid">
+        <div class="field"><label for="coupon-new-code">Code</label><input id="coupon-new-code" name="code" maxlength="40" required></div>
+        <div class="field"><label for="coupon-kind">Type</label><select id="coupon-kind" name="kind"><option value="percent">Percent</option><option value="fixed">Fixed amount</option></select></div>
+        <div class="field"><label for="coupon-value">Value</label><input id="coupon-value" name="value" type="number" min=".01" step=".01" required></div>
+        <div class="field"><label for="coupon-limit">Usage limit</label><input id="coupon-limit" name="usage_limit" type="number" min="1"></div>
+        <div class="field"><label for="coupon-expiry">Expires at</label><input id="coupon-expiry" name="expires_at" type="datetime-local"></div>
+        <div class="full"><button type="submit">Create coupon</button></div>
+      </form>
+      <div class="table-wrap" style="margin-top:1rem"><table><thead><tr><th>Code</th><th>Type</th><th>Value</th><th>Uses</th><th>Status</th><th>Actions</th></tr></thead><tbody id="admin-coupon-rows"></tbody></table></div>
+    </section>
+    <section class="admin-panel hidden" id="panel-users"><h2>Learners</h2><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr></thead><tbody id="admin-user-rows"></tbody></table></div></section>
+    <section class="admin-panel hidden" id="panel-orders"><div class="inline" style="justify-content:space-between"><h2>Orders</h2><a class="button secondary small" href="/api/admin/orders.csv">Download CSV</a></div><div class="table-wrap"><table><thead><tr><th>Invoice</th><th>User</th><th>Total</th><th>Date</th><th>Status</th></tr></thead><tbody id="admin-order-rows"></tbody></table></div></section>
+    <section class="admin-panel hidden" id="panel-messages"><h2>Inbox</h2><div class="table-wrap"><table><thead><tr><th>Email</th><th>Message</th><th>Date</th><th>Status</th><th>Action</th></tr></thead><tbody id="admin-message-rows"></tbody></table></div></section>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

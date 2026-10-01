@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  color-scheme: light;
+  --ink: #17233b;
+  --ink-soft: #526078;
+  --ink-faint: #8290a8;
+  --paper: #f7f8fc;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --line: #e5e9f2;
+  --line-strong: #cbd3e1;
+  --brand: #4b48d6;
+  --brand-dark: #3936b5;
+  --brand-soft: #eeedff;
+  --accent: #e6a93d;
+  --accent-soft: #fff3dc;
+  --mint: #dff5ed;
+  --success: #16734a;
+  --danger: #b53b50;
+  --danger-soft: #fff0f1;
+  --info: #e9f4ff;
+  --font-body: "DM Sans", "Segoe UI", sans-serif;
+  --font-display: "Manrope", "Segoe UI", sans-serif;
+  --text-xs: .78rem;
+  --text-sm: .9rem;
+  --text-md: 1rem;
+  --text-lg: 1.22rem;
+  --text-xl: clamp(1.45rem, 2.5vw, 2rem);
+  --text-2xl: clamp(2.15rem, 5.2vw, 4.4rem);
+  --space-1: .35rem;
+  --space-2: .65rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4.5rem;
+  --space-8: 6rem;
+  --radius-sm: 10px;
+  --radius-md: 17px;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 5px 18px rgba(27, 39, 70, .06);
+  --shadow-md: 0 16px 45px rgba(27, 39, 70, .10);
+  --shadow-lg: 0 25px 80px rgba(27, 39, 70, .16);
+  --container: 1160px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #eef2ff;
+  --ink-soft: #b2bdd2;
+  --ink-faint: #8895ad;
+  --paper: #111827;
+  --surface: #192235;
+  --surface-raised: #202b40;
+  --line: #303c52;
+  --line-strong: #45536c;
+  --brand: #a09cff;
+  --brand-dark: #817bf3;
+  --brand-soft: #29294e;
+  --accent: #f5c36d;
+  --accent-soft: #3a3020;
+  --mint: #183a34;
+  --success: #75d5a7;
+  --danger: #ff9ba7;
+  --danger-soft: #402731;
+  --info: #1c344c;
+  --shadow-sm: 0 5px 18px rgba(0, 0, 0, .18);
+  --shadow-md: 0 16px 45px rgba(0, 0, 0, .25);
+  --shadow-lg: 0 25px 80px rgba(0, 0, 0, .36);
+}
